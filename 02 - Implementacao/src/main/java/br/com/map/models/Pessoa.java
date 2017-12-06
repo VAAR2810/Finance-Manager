@@ -3,18 +3,31 @@ package br.com.map.models;
 import java.util.ArrayList;
 import java.util.List;
 
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 /**
  * 
  * @author vaar|fals.
  *
  */
+@Entity
 public class Pessoa {
   
+  @Id
+  @GeneratedValue
   private long id;
   private String nome;
   private String login;
   private String senha;
   private boolean admin;
+  
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   private List<Carteira> carteiras;
   
   public Pessoa(){
@@ -30,7 +43,7 @@ public class Pessoa {
     this.login = login;
     this.senha = senha;
     this.admin = admin;
-    carteiras = new ArrayList<Carteira>();
+    //carteiras = new ArrayList<Carteira>();
   }
   
   /**
@@ -38,7 +51,7 @@ public class Pessoa {
    * 
    */
   public Pessoa(Carteira carteira) {
-    carteiras.add(carteira);
+    //carteiras.add(carteira);
   }
 
   public long getId() {
@@ -84,7 +97,7 @@ public class Pessoa {
   @Override
   public String toString() {
     return "Pessoa [id=" + id + ", nome=" + nome + ", login=" + login + ", senha=" + senha
-        + ", admin=" + admin + ", carteiras=" + carteiras + "]";
+        + ", admin=" + admin + "";
   }
 
 }

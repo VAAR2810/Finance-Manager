@@ -2,14 +2,26 @@ package br.com.map.models;
 
 import java.util.Date;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 /**
  * 
  * @author vaar|fals.
  *
  */
+@Entity
 public class ValorPadrao extends ValorRecebido {
+  @Id
+  @GeneratedValue
   private long id;
+  @Temporal(TemporalType.DATE)
   private Date expira;
+  @Temporal(TemporalType.DATE)
   private Date fechamento;
   
   public ValorPadrao(){

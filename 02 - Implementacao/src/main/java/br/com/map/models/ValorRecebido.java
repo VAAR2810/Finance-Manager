@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * 
@@ -13,12 +15,12 @@ import javax.persistence.Id;
  */
 @Entity
 public class ValorRecebido {
-  
   @Id
   @GeneratedValue
   private long id;
   private String comentario;
   private double valor;
+  @Temporal(TemporalType.DATE)
   private Date data;
   
   public ValorRecebido(){
