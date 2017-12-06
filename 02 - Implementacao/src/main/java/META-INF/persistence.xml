@@ -17,7 +17,10 @@
             <property name="javax.persistence.jdbc.user" value="postgres" />
             <property name="javax.persistence.jdbc.password" value="admin" />
             <!--  Propriedades do hibernate -->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+            <!--  <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />  -->
+            <property name="hibernate.connection.dialect" value="org.hibernate.dialect.PostgreSQL9" />
+            <property name="hibernate.default_schema" value="public" />
+            
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
             <!--  Atualiza o banco, gera as tabelas se for preciso -->
