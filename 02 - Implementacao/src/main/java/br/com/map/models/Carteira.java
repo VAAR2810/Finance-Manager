@@ -3,17 +3,13 @@ package br.com.map.models;
 import java.util.Date;
 import java.util.List;
 
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -25,7 +21,7 @@ import javax.persistence.Transient;
  */
 @Entity
 public class Carteira {
-  
+
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private long id;
@@ -140,5 +136,12 @@ public class Carteira {
     this.gatos = gatos;
   }
 
+  @Override
+  public String toString() {
+    return "Carteira [id=" + id + ", fundosTotais=" + fundosTotais + ", fundoAtual=" + fundoAtual
+        + ", dataInicio=" + dataInicio + ", dataFechamento=" + dataFechamento + ", recebido="
+        + recebido + ", recebidoPadrao=" + recebidoPadrao + ", compras=" + compras + ", gatos="
+        + gatos + "]";
+  }
   
 }
