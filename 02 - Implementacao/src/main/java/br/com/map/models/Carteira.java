@@ -1,10 +1,22 @@
 package br.com.map.models;
 
 import java.util.Date;
+import java.util.List;
 
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  * 
@@ -15,12 +27,36 @@ import javax.persistence.Id;
 public class Carteira {
   
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private long id;
+  
+  @Column(name = "fundos_totais")
   private double fundosTotais;
+  
+  @Column(name = "fundo_atual")
   private double fundoAtual;
+  
+  @Temporal(TemporalType.DATE)
+  @Column(name = "data_inicio")
   private Date dataInicio;
+  
+  @Temporal(TemporalType.DATE)
+  @Column(name = "data_fechamento")
   private Date dataFechamento;
+  
+  @Column(name = "novos_valores_recebidos")
+  @ManyToMany
+  private List<ValorRecebido> recebido;
+  
+  @Column(name = "novos_valores_padroes")
+  @ManyToMany
+  private List<ValorPadrao> recebidoPadrao;
+  
+  @Column(name = "nova_compra")
+  @OneToMany
+  private List<Compra> compras;
+  
+  @Transient
   private double gatos;
   
   public Carteira(){
@@ -31,16 +67,7 @@ public class Carteira {
    * Construtor responsável por obter os dados direto.
    * 
    */
-  public Carteira(double fundosTotais, double fundoAtual, Date dataInicio, Date dataFechamento,
-      double gatos) {
-    super();
-    this.fundosTotais = fundosTotais;
-    this.fundoAtual = fundoAtual;
-    this.dataInicio = dataInicio;
-    this.dataFechamento = dataFechamento;
-    this.gatos = gatos;
-  }
-
+  
   public long getId() {
     return id;
   }
@@ -81,6 +108,30 @@ public class Carteira {
     this.dataFechamento = dataFechamento;
   }
 
+  public List<ValorRecebido> getRecebido() {
+    return recebido;
+  }
+
+  public void setRecebido(List<ValorRecebido> recebido) {
+    this.recebido = recebido;
+  }
+
+  public List<ValorPadrao> getRecebidoPadrao() {
+    return recebidoPadrao;
+  }
+
+  public void setRecebidoPadrao(List<ValorPadrao> recebidoPadrao) {
+    this.recebidoPadrao = recebidoPadrao;
+  }
+
+  public List<Compra> getCompras() {
+    return compras;
+  }
+
+  public void setCompras(List<Compra> compras) {
+    this.compras = compras;
+  }
+
   public double getGatos() {
     return gatos;
   }
@@ -89,11 +140,5 @@ public class Carteira {
     this.gatos = gatos;
   }
 
-  @Override
-  public String toString() {
-    return "Carteira [id=" + id + ", fundosTotais=" + fundosTotais + ", fundoAtual=" + fundoAtual
-        + ", dataInicio=" + dataInicio + ", dataFechamento=" + dataFechamento + ", gatos=" + gatos
-        + "]";
-  }
   
 }

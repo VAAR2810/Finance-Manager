@@ -4,8 +4,7 @@ import java.util.Date;
 
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -15,10 +14,9 @@ import javax.persistence.TemporalType;
  *
  */
 @Entity
+@PrimaryKeyJoinColumn(name="id")
 public class ValorPadrao extends ValorRecebido {
-  @Id
-  @GeneratedValue
-  private long id;
+  
   @Temporal(TemporalType.DATE)
   private Date expira;
   @Temporal(TemporalType.DATE)
@@ -35,14 +33,6 @@ public class ValorPadrao extends ValorRecebido {
   public ValorPadrao(Date expira, Date fechamento) {
     this.expira = expira;
     this.fechamento = fechamento;
-  }
-
-  public long getId() {
-    return id;
-  }
-
-  public void setId(long id) {
-    this.id = id;
   }
   
   public Date getExpira() {
@@ -63,7 +53,7 @@ public class ValorPadrao extends ValorRecebido {
 
   @Override
   public String toString() {
-    return "ValorPadrao [id=" + id + ", expira=" + expira + ", fechamento="
+    return "ValorPadrao [expira=" + expira + ", fechamento="
         + fechamento + "]";
   }
 

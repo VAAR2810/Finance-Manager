@@ -12,7 +12,7 @@ import javax.persistence.Persistence;
  */
 public final class PersistenceUtil {
 
-  private static final String PERSISTENCE_UNIT_NAME = "dao";
+  private static final String PERSISTENCE_UNIT_NAME = "mapFM";
   private static EntityManagerFactory entityManagerFactory = null;
   private static EntityManager entityManager = null;
 

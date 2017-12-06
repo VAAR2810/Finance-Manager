@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * 
@@ -18,6 +20,8 @@ public class Compra {
   @GeneratedValue
   private long id;
   private String descricao;
+  
+  @Temporal(TemporalType.DATE)
   private Date data;
   private double subvalor;
   private double valor;
@@ -87,11 +91,10 @@ public class Compra {
   public void setTipo(boolean tipo) {
     this.tipo = tipo;
   }
-
   @Override
   public String toString() {
-    return "Compra [id=" + id + ", Descricao=" + descricao + ", data=" + data + ", subvalor="
-        + subvalor + ", valor=" + valor + ", tipo=" + tipo + "]";
+    return "Compra [id=" + id + ", descricao=" + descricao + ", data=" + data + ", subvalor="
+        + subvalor + ", valor=" + valor + ", tipo=" + tipo;
   }
-  
+
 }
