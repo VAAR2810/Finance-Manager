@@ -19,7 +19,7 @@ import org.hibernate.criterion.Order;
  */
 public abstract class DaoGenericAbs<T> implements IDaoGeneric<T> {
 
-  EntityManager manager;
+  protected EntityManager manager;
   private final Class<T> classe;
 
   /** Construtor da classe. 

@@ -10,7 +10,6 @@ import br.com.map.util.DaoException;
 public class Main {
   
   public static void main(String[] args) throws DaoException {
-    
   }
 
 }

@@ -53,16 +53,23 @@ public class Carteira {
   private List<Compra> compras;
   
   @Transient
-  private double gatos;
+  private double gastos;
   
   public Carteira(){
     
   }
-
+  
+  
   /**
    * Construtor responsável por obter os dados direto.
    * 
    */
+  public Carteira(double fundosTotais, Date dataInicio, Date dataFechamento) {
+    super();
+    this.fundosTotais = fundosTotais;
+    this.dataInicio = dataInicio;
+    this.dataFechamento = dataFechamento;
+  }  
   
   public long getId() {
     return id;
@@ -129,11 +136,11 @@ public class Carteira {
   }
 
   public double getGatos() {
-    return gatos;
+    return gastos;
   }
 
   public void setGatos(double gatos) {
-    this.gatos = gatos;
+    this.gastos = gatos;
   }
 
   @Override
@@ -141,7 +148,7 @@ public class Carteira {
     return "Carteira [id=" + id + ", fundosTotais=" + fundosTotais + ", fundoAtual=" + fundoAtual
         + ", dataInicio=" + dataInicio + ", dataFechamento=" + dataFechamento + ", recebido="
         + recebido + ", recebidoPadrao=" + recebidoPadrao + ", compras=" + compras + ", gatos="
-        + gatos + "]";
+        + gastos + "]";
   }
   
 }
