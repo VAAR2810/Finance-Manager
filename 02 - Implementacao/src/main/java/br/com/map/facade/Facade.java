@@ -1,18 +1,16 @@
 package br.com.map.facade;
 
-import java.util.HashMap;
+import java.util.List;
 
 
 import br.com.map.dao.finance.CarteiraDao;
 import br.com.map.dao.finance.CompraDao;
 import br.com.map.dao.finance.PessoaDao;
-import br.com.map.dao.finance.ValorPadraoDao;
 import br.com.map.dao.finance.ValorRecebidoDao;
 import br.com.map.factory.Factory;
 import br.com.map.models.Carteira;
 import br.com.map.models.Compra;
 import br.com.map.models.Pessoa;
-import br.com.map.models.ValorPadrao;
 import br.com.map.models.ValorRecebido;
 import br.com.map.util.DaoException;
 
@@ -20,7 +18,6 @@ public class Facade {
   private PessoaDao pessoaDao;
   private CarteiraDao carteiraDao;
   private CompraDao comrpaDao;
-  private ValorPadraoDao valorPadraoDao;
   private ValorRecebidoDao valorRecebidoDao;
   
   
@@ -30,7 +27,6 @@ public class Facade {
     this.pessoaDao = Factory.pessoaDao();
     this.carteiraDao = Factory.carteiraDao();
     this.comrpaDao = Factory.compraDao();
-    this.valorPadraoDao = Factory.valorPadraoDao();
     this.valorRecebidoDao = Factory.valorRecebidoDao();
   }
   
@@ -48,12 +44,12 @@ public class Facade {
     pessoaDao.remove(pessoa);
   }
   
-  public void findPessoa(Pessoa pessoa) throws DaoException {
-    pessoaDao.remove(pessoa);
+  public Pessoa findPessoa(Long id) throws DaoException {
+    return pessoaDao.find(id);
   }
   
-  public void listAllPessoa() throws DaoException{
-    pessoaDao.listAll();
+  public List<Pessoa> listAllPessoa() throws DaoException{
+    return pessoaDao.listAll();
   }
   
   //Compra
@@ -69,12 +65,12 @@ public class Facade {
     comrpaDao.remove(compra);
   }
   
-  public void findCompra(Compra compra) throws DaoException {
-    comrpaDao.remove(compra);
+  public Compra findCompra(Long id) throws DaoException {
+    return comrpaDao.find(id);
   }
   
-  public void listAllCompra() throws DaoException{
-    comrpaDao.listAll();
+  public List<Compra> listAllCompra() throws DaoException{
+    return comrpaDao.listAll();
   }
   
   //Carteira
@@ -90,34 +86,12 @@ public class Facade {
     carteiraDao.remove(compra);
   }
   
-  public void findCarteira(Carteira compra) throws DaoException {
-    carteiraDao.remove(compra);
+  public Carteira findCarteira(Long id) throws DaoException {
+    return carteiraDao.find(id);
   }
   
-  public void listAllCarteira() throws DaoException{
-    carteiraDao.listAll();
-  }
-  
-  
-  //ValorPadrao
-  public void saveValorPadrao(ValorPadrao valorPadrao) throws DaoException{
-    valorPadraoDao.save(valorPadrao);
-  }
-  
-  public void updateValorPadrao(ValorPadrao valorPadrao) throws DaoException{
-    valorPadraoDao.update(valorPadrao);
-  }
-  
-  public void removeValorPadrao(ValorPadrao valorPadrao) throws DaoException{
-    valorPadraoDao.remove(valorPadrao);
-  }
-  
-  public void findValorPadrao(ValorPadrao valorPadrao) throws DaoException {
-    valorPadraoDao.remove(valorPadrao);
-  }
-  
-  public void listAllValorPadrao() throws DaoException{
-    valorPadraoDao.listAll();
+  public List<Carteira> listAllCarteira() throws DaoException{
+    return carteiraDao.listAll();
   }
   
 //ValorPadrao
@@ -133,11 +107,11 @@ public class Facade {
     valorRecebidoDao.remove(valorRecebido);
   }
   
-  public void findValorRecebido(ValorRecebido valorRecebido) throws DaoException {
-    valorRecebidoDao.remove(valorRecebido);
+  public ValorRecebido findValorRecebido(Long id) throws DaoException {
+    return valorRecebidoDao.find(id);
   }
   
-  public void listAllValorRecebido() throws DaoException{
-    valorRecebidoDao.listAll();
+  public List<ValorRecebido> listAllValorRecebido() throws DaoException{
+    return valorRecebidoDao.listAll();
   }
 }

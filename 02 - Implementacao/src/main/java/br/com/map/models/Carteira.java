@@ -44,10 +44,6 @@ public class Carteira {
   @ManyToMany
   private List<ValorRecebido> recebido;
   
-  @Column(name = "novos_valores_padroes")
-  @ManyToMany
-  private List<ValorPadrao> recebidoPadrao;
-  
   @Column(name = "nova_compra")
   @OneToMany
   private List<Compra> compras;
@@ -118,15 +114,6 @@ public class Carteira {
   public void setRecebido(List<ValorRecebido> recebido) {
     this.recebido = recebido;
   }
-
-  public List<ValorPadrao> getRecebidoPadrao() {
-    return recebidoPadrao;
-  }
-
-  public void setRecebidoPadrao(List<ValorPadrao> recebidoPadrao) {
-    this.recebidoPadrao = recebidoPadrao;
-  }
-
   public List<Compra> getCompras() {
     return compras;
   }
@@ -147,7 +134,7 @@ public class Carteira {
   public String toString() {
     return "Carteira [id=" + id + ", fundosTotais=" + fundosTotais + ", fundoAtual=" + fundoAtual
         + ", dataInicio=" + dataInicio + ", dataFechamento=" + dataFechamento + ", recebido="
-        + recebido + ", recebidoPadrao=" + recebidoPadrao + ", compras=" + compras + ", gatos="
+        + recebido + ", compras=" + compras + ", gatos="
         + gastos + "]";
   }
   
