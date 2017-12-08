@@ -1,19 +1,24 @@
-package factory;
+package br.com.map.factory;
 
 import java.util.Date;
 
 
+import br.com.map.dao.finance.CarteiraDao;
+import br.com.map.dao.finance.CompraDao;
 import br.com.map.dao.finance.PessoaDao;
+import br.com.map.dao.finance.ValorPadraoDao;
+import br.com.map.dao.finance.ValorRecebidoDao;
+import br.com.map.facade.Facade;
 import br.com.map.models.Carteira;
 import br.com.map.models.Compra;
 import br.com.map.models.Pessoa;
 import br.com.map.models.ValorPadrao;
 import br.com.map.models.ValorRecebido;
-import facade.Facade;
+import br.com.map.util.DaoException;
 
 public class Factory {
   
-  public static final Facade facade(){
+  public static final Facade facade() throws DaoException{
     return new Facade();
   }
   
@@ -41,4 +46,19 @@ public class Factory {
     return new PessoaDao();
   }
   
+  public static final CarteiraDao carteiraDao(){
+    return new CarteiraDao();
+  }
+ 
+  public static final CompraDao compraDao(){
+    return new CompraDao();
+  }
+  
+  public static final ValorPadraoDao valorPadraoDao(){
+    return new ValorPadraoDao();
+  }
+  
+  public static final ValorRecebidoDao valorRecebidoDao(){
+    return new ValorRecebidoDao();
+  }
 }
